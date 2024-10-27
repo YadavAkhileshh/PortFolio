@@ -1,28 +1,46 @@
-import logo from "../assets/projects/logoprofile.png";
-import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
+import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import Toggle from './Toggle';
 
 const Navbar = () => {
-  return (
-    <nav className=" mb-20 flex items-center justify-between py-6">
-        <div className="flex flex-shrink-0 items-center">
-            <img className="mx-2 w-10" src={logo} alt="logo" style={{ width: '100px', height: 'auto' }}/>
-        </div>
-        <div className="m-8 flex items-center justify-center gap-4 text-2xl">
-            <a href="https://www.linkedin.com/in/yakhilesh/" target="_blank">
+  const location = useLocation();
 
-            <FaLinkedin/>
-            </a>
-            < a href="https://github.com/yakhilgithub" target="_blank" >
-             <FaGithub/>
-              </a>  
-              <a href="https://www.instagram.com/akhilyadav_019/" target="_blank">
-            <FaInstagram/>
-                </a>   
-                <a href="https://twitter.com/AkhileshYa81085" target="_blank">
-            <FaSquareXTwitter />
-                  </a>      
+  const navItems = [
+    { name: 'Projects', path: '/projects' },
+    { name: 'About', path: '/about' },
+    { name: 'Tech', path: '/technologies' },
+  ];
+
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-md">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          <Link to="/" className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+            Heyy!
+          </Link>
+          <div className="flex items-center space-x-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className="relative text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300"
+              >
+                {item.name}
+                {location.pathname === item.path && (
+                  <motion.div
+                    layoutId="underline"
+                    className="absolute left-0 right-0 bottom-0 h-0.5 bg-indigo-600 dark:bg-indigo-400"
+                    initial={false}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                )}
+              </Link>
+            ))}
+            <Toggle />
+          </div>
         </div>
+      </div>
     </nav>
   );
 };

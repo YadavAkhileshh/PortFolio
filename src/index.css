@@ -6,3 +6,67 @@
 .root {
   font-family: "Inter", sans-serif;
 }
+h1, h2, h3 {
+  font-family: 'Inter', sans-serif; 
+}
+
+p {
+  font-family: 'Inter', sans-serif; 
+}
+
+
+
+.button-30 {
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 8px;
+  border: 2px solid #D6D6E7; 
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px, rgba(0, 0, 0, 0.1) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 36px; 
+  justify-content: center;
+  line-height: 1;
+  overflow: hidden;
+  padding: 0 12px; 
+  text-align: center; 
+  text-decoration: none;
+  transition: box-shadow .3s, transform .3s, background-color .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+
+  
+  font-size: 14px; 
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+
+@keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}

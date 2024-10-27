@@ -1,57 +1,97 @@
+import { useState } from "react";
 import { PROJECTS } from "../constants";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+
+const categories = ["All", "Web", "SaaS", "AI"];
 
 const Projects = () => {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredProjects = PROJECTS.filter(
+    (project) => activeCategory === "All" || project.category === activeCategory
+  );
+
   return (
-    <div className="border-b border-neutral-900 pb-4">
-      <motion.h2
-        whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -100 }}
-        transition={{ duration: 0.5 }}
-        className="my-20 text-center text-4xl"
-      >
-        Projects
-      </motion.h2>
-      <div>
-        {PROJECTS.map((project, index) => (
-          <div key={index} className="mb-8 flex flex-wrap lg:justify-center">
-            <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: -100 }}
-              transition={{ duration: 1 }}
-              className="w-full lg:w-1/4"
+    <div className="py-20 pt-24 bg-gray-50 dark:bg-gray-900 min-h-screen">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-center mb-8">
+          {categories.map((category) => (
+            <motion.button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`mx-2 px-4 py-2 rounded-full ${
+                activeCategory === category
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              < a href={project.url} target="_blank" rel="noopener noreferrer">
-              <img
-                src={project.image}
-                width={150}
-                height={150}
-                alt={project.title}
-                className="mb-6 rounded"
-              />
-              </a>
-            </motion.div>
+              {category}
+            </motion.button>
+          ))}
+        </div>
+        <AnimatePresence>
+          {filteredProjects.map((project, index) => (
             <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: 100 }}
-              transition={{ duration: 1 }}
-              className="w-full max-w-xl lg:w-3/4"
+              key={project.id}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="mb-16 bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
             >
-              <a href={project.url} target="_blank" rel="noopener noreferrer">
-              <h6 className="mb-2 font-semibold">{project.title}</h6>
-              </a>
-              <p className="mb-4 text-neutral-400">{project.description}</p>
-              {project.technologies.map((tech, index) => (
-                <span
-                  key={index}
-                  className="mr-2 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-900"
-                >
-                  {tech}
-                </span>
-              ))}
+              <div className="md:flex">
+                <div className="md:flex-shrink-0">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="h-48 w-full object-cover md:w-48"
+                  />
+                </div>
+                <div className="p-8">
+                  <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                    {project.title}
+                  </div>
+                  <p className="mt-2 text-gray-600 dark:text-gray-300">
+                    {project.description}
+                  </p>
+                  <div className="mt-4">
+                    {project.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-300 mr-2 mb-2"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-6 flex space-x-4">
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400"
+                    >
+                      <FaExternalLinkAlt className="mr-2" />
+                      Live Demo
+                    </a>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+                    >
+                      <FaGithub className="mr-2" />
+                      Source Code
+                    </a>
+                  </div>
+                </div>
+              </div>
             </motion.div>
-          </div>
-        ))}
+          ))}
+        </AnimatePresence>
       </div>
     </div>
   );
