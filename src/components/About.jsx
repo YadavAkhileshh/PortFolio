@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ABOUT_TEXT } from "../constants";
+import { ABOUT_TEXT } from "../constants/index";
 
 const About = () => {
   return (
