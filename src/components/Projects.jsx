@@ -3,7 +3,7 @@ import { PROJECTS } from "../constants";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
-const categories = ["All", "Web", "SaaS", "AI"];
+const categories = ["All", "Web", "SaaS", "AI","Editing"];
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("All");

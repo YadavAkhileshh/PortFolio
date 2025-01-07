@@ -9,6 +9,8 @@ const Navbar = () => {
     { name: 'Projects', path: '/projects' },
     { name: 'About', path: '/about' },
     { name: 'Tech', path: '/technologies' },
+    { name: 'Freelance', path: '/freelance' },
+
   ];
 
   return (
@@ -16,7 +18,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
-            Heyy!
+            
           </Link>
           <div className="flex items-center space-x-4">
             {navItems.map((item) => (

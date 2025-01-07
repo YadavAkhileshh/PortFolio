@@ -14,7 +14,7 @@ const About = () => {
           About <span className="text-indigo-600 dark:text-indigo-400">Me</span>
         </motion.h2>
         <div className="flex flex-wrap items-center">
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -28,7 +28,7 @@ const About = () => {
               />
               <div className="absolute inset-0 bg-indigo-600 opacity-20 rounded-lg"></div>
             </div>
-          </motion.div>
+          </motion.div> */}
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
@@ -39,7 +39,7 @@ const About = () => {
               {ABOUT_TEXT}
             </p>
             <motion.a
-              href="/path-to-your-cv.pdf"
+              href="/blank.pdf"
               download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

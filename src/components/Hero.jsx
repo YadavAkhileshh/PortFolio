@@ -111,9 +111,7 @@ const Hero = () => {
                 Let&#39;s Create Something Amazing!
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
-                With expertise in full-stack development, video editing, and
-                content creation, I bring a unique blend of skills to every
-                project.
+              Combining expertise in full-stack development, video editing, and content creation, I deliver a unique fusion of technical precision and creative vision to every project, turning ideas into impactful results.
               </p>
               <motion.button
                 whileHover={{ scale: 1.05 }}
