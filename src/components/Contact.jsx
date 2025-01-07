@@ -1,4 +1,4 @@
-import { CONTACT } from "../constants/index.js";
+import { CONTACT } from "../constants/index";
 import { motion } from "framer-motion";
 
 const Contact = () => {
