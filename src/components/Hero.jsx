@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaTwitter, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { HERO_CONTENT } from "../constants";
+import { HERO_CONTENT } from "../constants/index";
 import profilePic from "../assets/projects/profilepic-01.jpg";
 import { Link } from "react-router-dom";
 
